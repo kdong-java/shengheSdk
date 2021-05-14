@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.sdk.server.dao.CodeMapper">
+    <insert id="insertCode" parameterType="Code">
+        insert into code (date,code,appid,appkey,jiamiCode) values (#{date},#{code},#{appid},#{appkey},#{jiamiCode})
+    </insert>
+    <select id="selectByIdAndAccount"  resultType="UserLogin">
+        select * from backCode where  accountNumber=#{accountNumber}
+    </select>
+    <insert id="insertUser">
+        insert into backCode (idCardNumber,accountNumber,age,loginTime,logoutTime) values (#{idCardNumber},#{accountNumber},#{age},#{loginTime},#{logoutTime})
+    </insert>
+    <update id="updateByLoginTime">
+        update backCode set loginTime=#{loginTime}  where accountNumber=#{accountNumber}
+    </update>
+    <update id="updateByLogoutTime">
+        update backCode set logoutTime=#{logoutTime}  where accountNumber=#{accountNumber}
+    </update>
+</mapper>

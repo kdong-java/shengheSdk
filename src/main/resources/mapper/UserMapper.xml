@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdk.server.dao.UserMapper">
+    <select id="selectByTelAndPwd"  resultType="User">
+        select * from user where user_tel=#{userTel} and user_passwd=#{password}
+    </select>
+
+    <insert id="insertNewUser" >
+        insert into user (user_tel,user_passwd) values (#{userTel},#{password})
+    </insert>
+    <delete id="deleteOldUser">
+        delete from user where user_tel=#{userTel}
+    </delete>
+
+    <select id="selectByTel">
+        select * from user where user_tel=#{userTel}
+    </select>
+</mapper>
